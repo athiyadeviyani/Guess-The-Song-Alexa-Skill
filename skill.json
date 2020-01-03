@@ -1,0 +1,31 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "A guess the song game",
+          "examplePhrases": [
+            "Alexa open hello decorator world",
+            "hello",
+            "help"
+          ],
+          "name": "Guess-the-song",
+          "description": "Sample Full Description"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Sample Testing Instructions.",
+      "category": "KNOWLEDGE_AND_TRIVIA",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda/py",
+          "uri": "guess-the-song-lambda"
+        }
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}

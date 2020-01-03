@@ -1,0 +1,183 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "guess the intro",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "TestIntent",
+                    "slots": [],
+                    "samples": [
+                        "I would like to do a test."
+                    ]
+                },
+                {
+                    "name": "StartSongGameIntent",
+                    "slots": [
+                        {
+                            "name": "GameMode",
+                            "type": "SongGameMode"
+                        },
+                        {
+                            "name": "AnswerType",
+                            "type": "SongGameAnswerType",
+                            "samples": [
+                                "I would like to guess the {AnswerType}",
+                                "{AnswerType}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "Play a {GameMode} game",
+                        "Play a game with a {GameMode} guessing the {AnswerType}",
+                        "I want to play a {GameMode} game guessing the {AnswerType}",
+                        "I want to guess the {AnswerType} of the song",
+                        "I want to play a {GameMode} game round"
+                    ]
+                },
+                {
+                    "name": "SongGuessIntent",
+                    "slots": [
+                        {
+                            "name": "UserGuess",
+                            "type": "AMAZON.MusicCreativeWorkType"
+                        }
+                    ],
+                    "samples": [
+                        "It is definitely {UserGuess}",
+                        "It is {UserGuess}",
+                        "I think it is {UserGuess}",
+                        "{UserGuess}",
+                        "It might be {UserGuess}"
+                    ]
+                },
+                {
+                    "name": "AMAZON.PauseIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.ResumeIntent",
+                    "samples": []
+                }
+            ],
+            "types": [
+                {
+                    "name": "SongGameMode",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "number of songs",
+                                "synonyms": [
+                                    "amount of songs"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "elimination",
+                                "synonyms": [
+                                    "eliminate"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "SongGameAnswerType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "title",
+                                "synonyms": [
+                                    "name"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "artist",
+                                "synonyms": [
+                                    "band"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "StartSongGameIntent",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "GameMode",
+                            "type": "SongGameMode",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "AnswerType",
+                            "type": "SongGameAnswerType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1076268152480.40598615585"
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1076268152480.40598615585.668043278549"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1076268152480.40598615585",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What would you like to guess"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1076268152480.40598615585.668043278549",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "I don't reccognise that answer"
+                    }
+                ]
+            }
+        ]
+    }
+}

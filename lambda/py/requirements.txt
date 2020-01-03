@@ -1,0 +1,6 @@
+ask-sdk-core
+spotipy
+<<<<<<< HEAD
+=======
+ask_sdk_model
+>>>>>>> f5d136627a021b393069897cbef3a468efdcda16
